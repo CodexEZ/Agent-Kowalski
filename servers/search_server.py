@@ -4,14 +4,16 @@ import requests
 from bs4 import BeautifulSoup
 import asyncio
 import uvicorn
-
+from dotenv import load_dotenv
 import sys
+import os
+load_dotenv()
 
 if sys.platform.startswith("win"):
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 app = FastMCP()
-OPENWEATHER_API_KEY = "5e749d88f2df02cacc9be6abf8088531"
+OPENWEATHER_API_KEY = os.environ.get("OPENWEATHER_API_KEY")
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; AI-ResearchBot/1.0)"}
 TIMEOUT = 10
 
